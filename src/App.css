@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,66 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body {
+  background-color: #fc90a4;
+  background-image: url(./assets/bg1.jpg);
+}
+
+.header {
+  text-align: center;
+  font-size: 50px;
+  font-family: "Poppins", sans-serif;
+  margin-top: 20px;
+  color:whitesmoke;
+  border-radius: 2px;
+  border-width: 5px;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.addButton {
+  background-color: #FFB6B9;
+  color: whitesmoke;
+  border: 5px;
+  border-radius: 4px;
+  font-size: 20px;
+  width: 15%;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 1px rgb(206, 206, 206);
+  font-family: "Poppins", sans-serif;
+}
+
+.addButton:hover {
+  background-color: #3e8e41
+}
+
+.addButtonContainer {
+  margin-top: 8px;  
+}
+
+.taskInputField {
+  background-color: whitesmoke;
+  border-radius: 3px;
+  border-width: 0.8px;
+  font-size: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: 80%;
+  font-family: "Poppins", sans-serif;
+  color: #61C0BF;
+}
+
+.taskInputContainer {
+  margin-top: 20px;
+}
+
+.tasksBigContainer {
+  margin-left: 30%;
+  margin-right: 30%;
+  padding-top: 10px;
+  padding-bottom: 30%;
+  background-color: #eff7f6;
 }
