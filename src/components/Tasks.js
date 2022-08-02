@@ -1,37 +1,51 @@
-import React  from "react";
-import { db } from "../firebase";
-import { collection, addDoc } from "firebase/firestore";
+import React from "react";
 
-export default function AddTask() {
-    const [task, setTask] = React.useState("");
+export default function Tasks({
+    todo,
+    toggleCompleted,
+    handleEdit,
+    handleDelete,
+}) {
+    const [newTodo, setNewTodo] = React.useState(todo.task);
 
-    const handleSubmit = async (e) => {
+    const handleChange = (e) =>  {
         e.preventDefault();
 
-        if (task !== "") {
-            await addDoc(collection(db, "todos"), {
-                task,
-                completed: false,
-            });
-            setTask("");
+        if (todo.completed) {
+            setNewTodo(todo.task);
+        } else {
+            todo.task = "";
+            setNewTodo(e.target.value);
         }
-    };
+    }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="tasksBigContainer">
-                <div className="taskInputContainer">
-                <input 
-                    type="text"
-                    className="taskInputField"
-                    placeholder="New Task..."
-                    value={task}
-                    onChange={e => setTask(e.target.value)}
-                />
-                </div>
-                <div className="addButtonContainer"></div>
-                    <button className="addButton">Add</button>
-            </div>
-        </form>
+        <div className="todo">
+            <input
+                className="list"
+                type="text"
+                style={{textDecoration: todo.completed && "line-through" }}
+                value={todo.task === "" ? newTodo : todo.task}
+                onChange={handleChange}
+            />
+
+            <input
+                className="checkBox"
+                type="checkbox"
+                onClick={() => toggleCompleted(todo)}
+            />
+
+            <button 
+                className="editTodo"
+                onClick={() => handleEdit(todo, newTodo)}
+                >Edit 
+            </button>
+
+            <button
+                className="deleteTodo"
+                onClick={() => handleDelete(todo.id)}
+                >Delete
+            </button>
+        </div>
     )
 }
